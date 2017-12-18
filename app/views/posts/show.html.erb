@@ -1,8 +1,10 @@
 <% content_for(:title, "Post | Squad") %>
 
 <h1><%= @post.title %></h1>
-<h2><%= @post.category %></h2>
+<h2> Username:<%= @post.user.user_name %></h2>
 <h3><%= @post.body %></h3>
+<hr>
+<h4><%= @post.category %></h4>
 <h4><%= @post.created_at %></h4>
 <br>
 <% if current_user == @post.user %>
@@ -18,28 +20,36 @@
                          :data => {:confirm => "You sure?",
                                    :method => "delete"} %></p> -->
 <hr>
+<div class="well">
+
+
 <% if @post.comments.any? %>
   <h4>Here are the comments for this post:</h4>
 
-  <ul>
+  <ol>
     <% @post.comments.each do |comment| %>
       <li>
         <%= comment.reply %> |
-        <br>
         <% if current_user == comment.user %>
         <%= link_to "Edit", edit_post_comment_path(@post, comment) %> |
         <%= link_to "Delete", post_comment_path(@post, comment),
                                  :data => {:confirm => "Are you sure?",
                                                 :method => "delete"} %>
                                             <hr>
+                                          </li>
+        <% else %>
+          <%= comment.created_at %>
+        <br>
         <%end%>
-      </li>
     <% end %>
-  </ul>
+    <br>
+  </ol>
+
 <% else %>
   <p>There are no comments yet!</p>
 <% end %>
 <p><%= link_to "Add a comment", new_post_comment_path(@post) %></p>
+</div>
 
 
 <hr>
