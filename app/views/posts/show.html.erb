@@ -1,0 +1,37 @@
+<% content_for(:title, "Post | Squad") %>
+
+<h1><%= @post.title %></h1>
+<h2><%= @post.category %></h2>
+<h3><%= @post.body %></h3>
+<h4><%= @post.created_at %></h4>
+<br>
+<p><%= link_to "Edit", edit_post_path(@post) %> |
+<%= link_to "Delete", post_path(@post),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+<hr>
+<% if @post.comments.any? %>
+  <h4>Here are the comments for this post:</h4>
+
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li>
+        <%= comment.reply %> |
+        <br>
+        <%= link_to "Edit", edit_post_comment_path(@post, comment) %> |
+        <%= link_to "Delete", post_comment_path(@post, comment),
+                                 :data => {:confirm => "Are you sure?",
+                                                :method => "delete"} %>
+                                            <hr>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no comments yet!</p>
+<% end %>
+<p><%= link_to "Add a comment", new_post_comment_path(@post) %></p>
+
+
+<hr>
+<br>
+<h3><%= link_to "Back to HQ", posts_path %></h3>

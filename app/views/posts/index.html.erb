@@ -1,0 +1,18 @@
+<h1>Squad Posts</h1>
+
+
+<hr>
+<ul>
+  <% @posts.each do |post| %>
+
+  <h1><%= link_to post.title, post_path(post)%></h1>
+  <ul>
+    <li>Category: <br> <%= post.category %></li>
+
+    <li>Time created: <br> <%= post.created_at %></li>
+  </ul>
+  <hr>
+  <% end %>
+
+</ul>
+<%= link_to "New Post", new_post_path %>
