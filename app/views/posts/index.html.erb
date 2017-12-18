@@ -15,7 +15,9 @@
 
   <h1><%= link_to post.title, post_path(post)%></h1>
   <ul>
-    <li>Category: <br> <%= post.category %></li>
+    <li>Category:  <%= post.category %></li>
+
+    <li>Username: <%= post.user.user_name %></li>
 
     <li>Time created: <br> <%= post.created_at %></li>
   </ul>
@@ -23,4 +25,9 @@
   <% end %>
 
 </ul>
-<%= link_to "New Post", new_post_path %>
+
+<% if current_user %>
+  <h5> <%= link_to "New Post", new_post_path %></h5>
+<% else %>
+  <h5>Please sign in to post.</h5>
+<% end %>
