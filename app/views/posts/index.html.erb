@@ -1,12 +1,11 @@
 
-<% if current_user %>
-  <%= current_user.user_name %>
-  <h5><%= link_to "Sign out", 'users/sign_out', method: :delete %></h5>
-<% else %>
-  <h5><%= link_to "Sign in", 'users/sign_in' %> </h5>
-<% end %>
-
 <h1>Squad Posts</h1>
+<br>
+<% if current_user %>
+  <h5> <%= link_to "New Post", new_post_path %></h5>
+<% else %>
+  <h5>Please sign in to post.</h5>
+<% end %>
 
 
 <hr>

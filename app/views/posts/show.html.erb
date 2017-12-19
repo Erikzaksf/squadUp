@@ -22,8 +22,7 @@
   <% @post.comments.each do |comment| %>
     <li>
     <%= comment.reply %> |
-    <% if current_user == comment.user %>
-      <%= link_to "Edit", edit_post_comment_path(@post, comment) %> |
+    <% if current_user == comment.user %> |
       <%= link_to "Delete", post_comment_path(@post, comment), :data => {:confirm => "Are you sure?", :method => "delete"} %>
       <hr>
       </li>
@@ -41,8 +40,5 @@
 <% end %>
 <p><%= link_to "Add a comment", new_post_comment_path(@post) %></p>
 </div>
-
-
 <hr>
 <br>
-<h3><%= link_to "Back to HQ", posts_path %></h3>

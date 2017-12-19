@@ -9,11 +9,19 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <a class="navbar-brand navbar-brand-right" href="/posts">HQ</a>
+      <% if current_user %>
+        <%= current_user.user_name %>
+        <h5><%= link_to "Sign out", 'users/sign_out', method: :delete %></h5>
+      <% else %>
+        <h5><%= link_to "Sign in", 'users/sign_in' %> </h5>
+      <% end %>
+    </nav>
     <div class="container">
-
-    <%= yield %>
-
+      <%= yield %>
     </div>
-
+    <div class="well">
+    </div>
   </body>
 </html>
