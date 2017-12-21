@@ -1,6 +1,6 @@
 <% content_for(:title, "Post | Squad") %>
 
-
+<%= image_tag(@post.image.url, alt: 'Image') if @post.image? %>
 <h3>Category: <%= @post.category %></h3>
 <h1><%= @post.title %></h1>
 <h2> User: 	&nbsp;	<%= @post.user.user_name %></h2>
