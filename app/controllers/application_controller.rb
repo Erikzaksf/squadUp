@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def block_ip_addresses
-    head :unauthorized if current_ip_address == "0.0.0.0"
+    head :unauthorized if current_ip_address == "0.0.0.0.0"
   end
 
   def current_ip_address
