@@ -22,6 +22,7 @@
   <% @post.comments.each do |comment| %>
     <li>
     <%= comment.reply %> |
+    <%= comment.user.user_name %>
     <% if current_user == comment.user %> |
       <%= link_to "Delete", post_comment_path(@post, comment), :data => {:confirm => "Are you sure?", :method => "delete"} %>
       <hr>
